@@ -13,6 +13,7 @@
   "boot_wait": "120s",
   "containerd_cri_socket": "/run/docker/libcontainerd/docker-containerd.sock",
   "crictl_source_type": "http",
+  "containerd_version": "1.4.1",
   "kubernetes_cni_source_type": "http",
   "kubernetes_source_type": "http",
   "python_path": "/opt/bin/builder-env/site-packages",
