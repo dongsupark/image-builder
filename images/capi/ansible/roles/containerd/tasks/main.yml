@@ -35,6 +35,12 @@
     dest: /tmp/containerd.tar.gz
     mode: 0600
 
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ sysusr_prefix }}/bin"
+    state: directory
+    mode: 0755
+
 # TODO(vincepri): This unpacks the entire tar in the root directory
 # we should find a better way to check what's being unpacked and where.
 - name: unpack containerd
@@ -57,12 +63,6 @@
       - --wildcards
       - '*containerd-shim-runc-v*'
   when: ansible_os_family == "Flatcar"
-
-- name: Create a directory if it does not exist
-  file:
-    path: "{{ sysusr_prefix }}/bin"
-    state: directory
-    mode: 0755
 
 - name: Create symlinks for containerd for Flatcar
   file:
